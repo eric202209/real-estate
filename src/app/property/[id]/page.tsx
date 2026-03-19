@@ -69,11 +69,17 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
               {'•'} {property.sqft.toLocaleString()} sqft
             </p>
           </div>
-          <div className="flex gap-3">
-            <button className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end sm:items-center">
+            <Link
+              href="/listings"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 sm:w-auto sm:px-5"
+            >
+              ← Back to Listings
+            </Link>
+            <button className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 sm:w-auto sm:px-5">
               📷 Save
             </button>
-            <button className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+            <button className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 sm:w-auto sm:px-5">
               📧 Share
             </button>
           </div>

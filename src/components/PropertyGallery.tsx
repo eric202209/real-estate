@@ -1,7 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 interface PropertyGalleryProps {
   images: string[];
@@ -11,26 +10,39 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
+    if (images.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevImage = () => {
+    if (images.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
+
+  const safeImages = useMemo(() => images ?? [], [images]);
+  const currentSrc = safeImages[currentIndex] || '/window.svg';
 
   return (
     <div className="relative">
       <div className="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100">
-        <Image
-          src={images[currentIndex] || '/api/placeholder/800/600'}
+        <img
+          src={currentSrc}
           alt={'Property image ' + (currentIndex + 1)}
-          fill
-          className="object-cover"
-          unoptimized
+          className="h-full w-full object-cover object-center"
+          loading="eager"
+          decoding="async"
+          onError={() => {
+            // If the current image fails (e.g. 404), try the next one.
+            // This matches what we do in PropertyCard.
+            setCurrentIndex((prev) => {
+              if (safeImages.length <= 1) return prev;
+              return (prev + 1) % safeImages.length;
+            });
+          }}
         />
       </div>
 
-      {images.length > 1 && (
+      {safeImages.length > 1 && (
         <>
           <button
             onClick={prevImage}
@@ -48,7 +60,7 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
           </button>
 
           <div className="mt-4 flex gap-2">
-            {images.map((_, index) => (
+            {safeImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}

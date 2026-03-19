@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #667eea;
-  --primary-dark: #5568d3;
-  --secondary: #764ba2;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --secondary: #14b8a6;
   --background: #f8fafc;
   --foreground: #333333;
   --card-background: #ffffff;
@@ -20,7 +20,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   line-height: 1.6;
   color: var(--foreground);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #eff6ff 50%, #ecfdf5 100%);
   min-height: 100vh;
 }
 
@@ -47,13 +47,13 @@ header {
 .logo {
   font-size: 28px;
   font-weight: bold;
-  color: #667eea;
+  color: var(--primary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .logo:hover {
-  color: #5568d3;
+  color: var(--primary-dark);
 }
 
 .nav {
@@ -71,11 +71,11 @@ header {
 }
 
 .nav-link:hover {
-  color: #667eea;
+  color: var(--primary);
 }
 
 .nav-link.active {
-  color: #667eea;
+  color: var(--primary);
   font-weight: bold;
 }
 
@@ -86,7 +86,7 @@ header {
   left: 0;
   right: 0;
   height: 2px;
-  background: #667eea;
+  background: var(--primary);
 }
 
 /* Hero Section */
@@ -95,6 +95,8 @@ header {
   color: white;
   padding: 60px 20px;
   margin-bottom: 40px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
 }
 
 .hero h1 {
@@ -132,12 +134,12 @@ header {
 .search-input:focus,
 .search-select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
 }
 
 .search-button {
-  background: #667eea;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 12px 30px;
@@ -149,7 +151,7 @@ header {
 }
 
 .search-button:hover {
-  background: #5568d3;
+  background: var(--primary-dark);
 }
 
 .search-button:active {
@@ -204,7 +206,7 @@ header {
 .property-price {
   font-size: 24px;
   font-weight: bold;
-  color: #667eea;
+  color: var(--primary);
   margin-bottom: 10px;
 }
 
@@ -229,7 +231,7 @@ header {
 }
 
 .contact-btn {
-  background: #667eea;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -244,7 +246,7 @@ header {
 }
 
 .contact-btn:hover {
-  background: #5568d3;
+  background: var(--primary-dark);
 }
 
 .contact-btn:active {
@@ -257,7 +259,7 @@ header {
 }
 
 .view-all-link {
-  color: #667eea;
+  color: var(--primary);
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
@@ -265,7 +267,7 @@ header {
 }
 
 .view-all-link:hover {
-  color: #5568d3;
+  color: var(--primary-dark);
 }
 
 /* About Page Styles */
@@ -278,7 +280,7 @@ header {
 }
 
 .about-section h2 {
-  color: #667eea;
+  color: var(--primary);
   margin-bottom: 20px;
   font-size: 32px;
   font-weight: bold;
@@ -301,7 +303,7 @@ header {
 }
 
 .service-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   padding: 30px;
   border-radius: 10px;
@@ -359,7 +361,7 @@ header {
 }
 
 .contact-section h2 {
-  color: #667eea;
+  color: var(--primary);
   margin-bottom: 20px;
   font-size: 32px;
   font-weight: bold;
@@ -413,8 +415,8 @@ header {
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
 }
 
 .form-textarea {
@@ -424,7 +426,7 @@ header {
 }
 
 .submit-btn {
-  background: #667eea;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 15px 30px;
@@ -437,7 +439,7 @@ header {
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #5568d3;
+  background: var(--primary-dark);
 }
 
 .submit-btn:disabled {
@@ -476,6 +478,7 @@ footer {
   color: white;
   padding: 30px;
   margin-top: 60px;
+  background: #0f172a;
 }
 
 footer p {
@@ -609,9 +612,9 @@ footer p {
 
 /* Button hover states */
 .submit-btn:hover:not(:disabled) {
-  background: #5568d3;
+  background: var(--primary-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 .contact-btn:hover:not(:disabled) {
