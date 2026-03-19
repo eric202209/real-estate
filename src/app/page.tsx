@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import PropertyCard from '@/components/PropertyCard';
-import { mockProperties } from '@/lib/mockProperties';
+import { mockProperties } from '@/data/mockProperties';
 
 interface SearchFilters {
   searchCity: string;
