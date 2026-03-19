@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 
 interface Property {
   id: number;
-  emoji: string;
+  image: string;
   price: string;
   address: string;
   beds: number;
@@ -38,18 +38,15 @@ export default function SearchBar({ properties, onResultsChange }: SearchBarProp
       // Beds filter
       const matchesBeds = minBeds === '' || property.beds >= Number(minBeds);
 
-      // Property type filter
+      // Property type filter - check against image URL patterns
       const matchesType = propertyType === 'all' || 
-        (propertyType === 'house' && ['🏡', '🏠', '🏘️'].includes(property.emoji)) ||
-        (propertyType === 'condo' && ['🏢'].includes(property.emoji)) ||
-        (propertyType === 'luxury' && ['🏰'].includes(property.emoji));
+        (propertyType === 'house' && !property.image.includes('🏢')) ||
+        (propertyType === 'condo' && property.image.includes('🏢')) ||
+        (propertyType === 'luxury' && property.image.includes('🏰'));
 
       return matchesSearch && matchesMinPrice && matchesMaxPrice && matchesBeds && matchesType;
     });
   }, [searchTerm, minPrice, maxPrice, minBeds, propertyType, properties]);
-
-  // Notify parent of filtered results
-  onResultsChange(filteredProperties);
 
   return (
     <div className="search-box">
