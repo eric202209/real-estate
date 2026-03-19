@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import SearchBar from '@/components/SearchBar';
+import Image from 'next/image';
 
 interface Property {
   id: number;
@@ -127,10 +128,12 @@ function PropertyCard({ property }: { property: Property }) {
   return (
     <div className="property-card">
       <div className="property-image">
-        <img 
-          src={property.image} 
-          alt={property.address} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        <Image
+          src={property.image}
+          alt={property.address}
+          fill
+          style={{ objectFit: 'cover' }}
+          unoptimized
         />
       </div>
       <div className="property-details">
