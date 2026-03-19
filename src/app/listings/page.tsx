@@ -2,77 +2,12 @@
 
 import { useState, useCallback } from 'react';
 import SearchBar from '@/components/SearchBar';
-
-interface Property {
-  id: number;
-  image: string;
-  price: string;
-  address: string;
-  beds: number;
-  baths: number;
-  sqft: number;
-}
-
-const properties: Property[] = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800',
-    price: '$850,000',
-    address: '123 Maple Street, San Francisco, CA',
-    beds: 3,
-    baths: 2,
-    sqft: 2100,
-  },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800',
-    price: '$650,000',
-    address: '456 Oak Avenue, Oakland, CA',
-    beds: 2,
-    baths: 2,
-    sqft: 1400,
-  },
-  {
-    id: 3,
-    image: 'https://images.unsplash.com/photo-1570129947423-1c5c6f5f7e4e?w=800',
-    price: '$1,200,000',
-    address: '789 Pine Road, Berkeley, CA',
-    beds: 4,
-    baths: 3,
-    sqft: 2800,
-  },
-  {
-    id: 4,
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800',
-    price: '$2,500,000',
-    address: '321 Sunset Boulevard, Malibu, CA',
-    beds: 5,
-    baths: 4,
-    sqft: 4200,
-  },
-  {
-    id: 5,
-    image: 'https://images.unsplash.com/photo-1600596542815-2a429feb0125?w=800',
-    price: '$950,000',
-    address: '567 Valley View, San Jose, CA',
-    beds: 3,
-    baths: 3,
-    sqft: 2500,
-  },
-  {
-    id: 6,
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?w=800',
-    price: '$750,000',
-    address: '890 Market Street, San Francisco, CA',
-    beds: 2,
-    baths: 2,
-    sqft: 1600,
-  },
-];
+import PropertyCard from '@/components/PropertyCard';
+import { Property } from '@/types/property';
+import { mockProperties } from '@/data/mockProperties';
 
 export default function ListingsPage() {
-  const allProperties = properties;
-  const [filteredProperties, setFilteredProperties] = useState<Property[]>(properties);
+  const [filteredProperties, setFilteredProperties] = useState<Property[]>(mockProperties);
 
   const handleResultsChange = useCallback((filtered: Property[]) => {
     setFilteredProperties(filtered);
@@ -88,7 +23,7 @@ export default function ListingsPage() {
       <section className="properties-section">
         <div style={{ marginBottom: '30px' }}>
           <SearchBar 
-            properties={allProperties}
+            properties={mockProperties}
             onResultsChange={handleResultsChange}
           />
         </div>
@@ -114,41 +49,11 @@ export default function ListingsPage() {
         {filteredProperties.length > 0 && (
           <div className="view-all">
             <span className="view-all-link">
-              Showing {filteredProperties.length} of {allProperties.length} properties
+              Showing {filteredProperties.length} of {mockProperties.length} properties
             </span>
           </div>
         )}
       </section>
     </>
-  );
-}
-
-function PropertyCard({ property }: { property: Property }) {
-  return (
-    <div className="property-card">
-      <div className="property-image">
-        <img 
-          src={property.image} 
-          alt={property.address} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </div>
-      <div className="property-details">
-        <div className="property-price">{property.price}</div>
-        <div className="property-address">{property.address}</div>
-        <div className="property-features">
-          <span className="feature">
-            🛏️ {property.beds} Bed
-          </span>
-          <span className="feature">
-            🚿 {property.baths} Bath
-          </span>
-          <span className="feature">
-            📐 {property.sqft.toLocaleString()} sqft
-          </span>
-        </div>
-        <button className="contact-btn">Schedule Viewing</button>
-      </div>
-    </div>
   );
 }

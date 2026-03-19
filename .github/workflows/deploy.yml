@@ -40,16 +40,10 @@ jobs:
       - name: Build
         run: pnpm build
       
-      - name: Copy to root
-        run: |
-          mv dist/* .
-          mv dist/.* . 2>/dev/null || true
-          rm -rf dist
-      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./out
 
   deploy:
     environment:

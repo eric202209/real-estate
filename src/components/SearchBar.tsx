@@ -1,16 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-
-interface Property {
-  id: number;
-  image: string;
-  price: string;
-  address: string;
-  beds: number;
-  baths: number;
-  sqft: number;
-}
+import { Property } from '@/types/property';
 
 interface SearchBarProps {
   properties: Property[];
@@ -26,23 +17,22 @@ export default function SearchBar({ properties, onResultsChange }: SearchBarProp
 
   const filteredProperties = useMemo(() => {
     return properties.filter((property) => {
-      // Search term filter (address)
+      // Search term filter (address + city)
+      const searchLower = searchTerm.toLowerCase();
       const matchesSearch = searchTerm === '' || 
-        property.address.toLowerCase().includes(searchTerm.toLowerCase());
+        property.address.toLowerCase().includes(searchLower) ||
+        property.city.toLowerCase().includes(searchLower);
 
       // Price filters
-      const priceNum = parseFloat(property.price.replace(/[^0-9.]/g, ''));
-      const matchesMinPrice = minPrice === '' || priceNum >= Number(minPrice);
-      const matchesMaxPrice = maxPrice === '' || priceNum <= Number(maxPrice);
+      const matchesMinPrice = minPrice === '' || property.price >= Number(minPrice);
+      const matchesMaxPrice = maxPrice === '' || property.price <= Number(maxPrice);
 
       // Beds filter
       const matchesBeds = minBeds === '' || property.beds >= Number(minBeds);
 
-      // Property type filter - check against image URL patterns
+      // Property type filter
       const matchesType = propertyType === 'all' || 
-        (propertyType === 'house' && !property.image.includes('🏢')) ||
-        (propertyType === 'condo' && property.image.includes('🏢')) ||
-        (propertyType === 'luxury' && property.image.includes('🏰'));
+        property.propertyType.toLowerCase().includes(propertyType.toLowerCase());
 
       return matchesSearch && matchesMinPrice && matchesMaxPrice && matchesBeds && matchesType;
     });
