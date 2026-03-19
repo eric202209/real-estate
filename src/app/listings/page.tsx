@@ -1,5 +1,8 @@
 'use client';
 
+import { useState } from 'react';
+import SearchBar from '@/components/SearchBar';
+
 interface Property {
   id: number;
   emoji: string;
@@ -68,6 +71,8 @@ const properties: Property[] = [
 ];
 
 export default function ListingsPage() {
+  const [filteredProperties, setFilteredProperties] = useState(properties);
+
   return (
     <>
       <section className="hero">
@@ -76,11 +81,38 @@ export default function ListingsPage() {
       </section>
 
       <section className="properties-section">
-        <div className="properties-grid">
-          {properties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+        <div style={{ marginBottom: '30px' }}>
+          <SearchBar 
+            properties={properties} 
+            onResultsChange={setFilteredProperties}
+          />
         </div>
+
+        <div className="properties-grid">
+          {filteredProperties.length > 0 ? (
+            filteredProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div style={{ 
+              gridColumn: '1 / -1', 
+              textAlign: 'center', 
+              padding: '40px',
+              color: '#666',
+              fontSize: '18px'
+            }}>
+              No properties found matching your criteria.
+            </div>
+          )}
+        </div>
+
+        {filteredProperties.length > 0 && (
+          <div className="view-all">
+            <span className="view-all-link">
+              Showing {filteredProperties.length} of {properties.length} properties
+            </span>
+          </div>
+        )}
       </section>
     </>
   );
