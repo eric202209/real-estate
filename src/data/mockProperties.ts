@@ -39,6 +39,8 @@ export const mockProperties: Property[] = [
     images: [
       'https://images.unsplash.com/photo-1570129947423-1c5c6f5f7e4e?w=800',
       'https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?w=800',
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800',
+      'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800',
     ],
     agent: {
       name: 'Michael Chen',
@@ -62,6 +64,8 @@ export const mockProperties: Property[] = [
     images: [
       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800',
       'https://images.unsplash.com/photo-1600596542815-2a429feb0125?w=800',
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
     ],
     agent: {
       name: 'Jennifer Williams',
