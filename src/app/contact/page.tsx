@@ -57,7 +57,7 @@ export default function ContactPage() {
       <section className="contact-section">
         <h2>Get in Touch</h2>
         <p className="contact-intro">
-          Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
         </p>
 
         {submitSuccess && (
@@ -159,7 +159,7 @@ export default function ContactPage() {
             <strong>📧 Email:</strong> info@dreamhomerealty.com
           </p>
           <p>
-            <strong>🕐 Office Hours:</strong> Monday - Friday: 9:00 AM - 6:00 PM
+            <strong>🕐 Office Hours:</strong> Monday - Friday: 9:00 AM - 6:00 PM&apos;
           </p>
         </div>
       </section>

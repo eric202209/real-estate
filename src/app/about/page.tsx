@@ -13,7 +13,7 @@ export default function AboutPage() {
     {
       emoji: '🔍',
       title: 'Property Valuation',
-      description: 'Free professional appraisal to determine your home\'s market value.',
+      description: 'Free professional appraisal to determine your home&apos;s market value.',
     },
     {
       emoji: '💼',
@@ -37,12 +37,12 @@ export default function AboutPage() {
         <h2>About DreamHome Realty</h2>
         <p>
           Welcome to DreamHome Realty, your trusted partner in finding the perfect home. With over 20 years of
-          experience in the real estate market, we've helped thousands of families achieve their dream of
+          experience in the real estate market, we&apos;ve helped thousands of families achieve their dream of
           homeownership.
         </p>
         <p>
           Our mission is simple: to provide exceptional service, expert guidance, and personalized attention to
-          every client. We believe that buying or selling a home is more than just a transaction—it's a
+          every client. We believe that buying or selling a home is more than just a transaction—it&apos;s a
           life-changing experience.
         </p>
       </section>
